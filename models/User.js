@@ -35,7 +35,9 @@ const userSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-     
+      transform: function (doc, ret) {
+        delete ret.__v;
+      }
     },
     id: false,
   }

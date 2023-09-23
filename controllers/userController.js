@@ -32,5 +32,22 @@ module.exports={
         } catch(err){            
             return res.status(500).json(err);
         }
-    }
+    },
+    async updateUser(req, res) {
+        try {
+          const updatedUser = await User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $set: req.body },
+            { runValidators: true, new: true }
+          );
+    
+          if (!updatedUser) {
+            res.status(404).json({ message: 'No user with this id!' });
+          }
+    
+          res.json(updatedUser);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      },
 }

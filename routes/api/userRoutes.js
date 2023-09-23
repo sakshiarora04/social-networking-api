@@ -2,4 +2,5 @@ const router= require('express').Router();
 const{
     createUser
 }= require ('../../');
-router.route
+router.route('/').post(createUser);
+module.exports=router;

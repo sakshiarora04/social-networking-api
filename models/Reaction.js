@@ -25,6 +25,9 @@ const reactionSchema = new Schema(
   {
     toJSON: {
       getters: true,
+      transform: function (doc, ret) {
+        delete ret.__v;
+      } 
     },
     id: false,
   }

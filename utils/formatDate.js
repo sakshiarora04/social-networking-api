@@ -1,11 +1,14 @@
 module.exports = (date) => {
+  //return time in hh:mm format
   const time = date.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
   });
+  //get month in short- 3 letters
   const month = date.toLocaleDateString("en-us", { month: "short" });
   let day = date.getDate();
   const fullyear = date.getFullYear();
+  // check date value to add suffix 
   switch (day) {
     case day === "1" || day === "21":
       day = `${day}st`;

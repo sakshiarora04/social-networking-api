@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-// Schema to create a course model
+// Schema to create a User model
 const userSchema = new Schema(
   {
     username: {
@@ -18,13 +18,14 @@ const userSchema = new Schema(
         'Please add a valid email address'
       ]
     },
-   
+   // referencing to thought model
     thoughts: [
       {
         type: Schema.Types.ObjectId,
         ref: 'thought',
       },
     ],
+   // referencing to friend model
     friends: [
       {
         type: Schema.Types.ObjectId,
@@ -35,6 +36,7 @@ const userSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      //remove version in json result
       transform: function (doc, ret) {
         delete ret.__v;
       }
@@ -42,6 +44,7 @@ const userSchema = new Schema(
     id: false,
   }
 );
+//virtual to create friends count property
 userSchema.virtual('friendCount')
 .get(function(){
   return this.friends.length;

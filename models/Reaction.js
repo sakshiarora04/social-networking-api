@@ -1,6 +1,6 @@
 const { Schema, Types } = require('mongoose');
 const formatDate = require('../utils/formatDate');
-
+// Schema to create Reaction subdocument schema
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -20,12 +20,14 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      //format date
       get:(createdAt)=> formatDate(createdAt)
     },
   },
   {
     toJSON: {
       getters: true,
+      //remove version in json result
       transform: function (doc, ret) {
         delete ret.__v;
       } 

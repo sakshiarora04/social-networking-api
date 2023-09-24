@@ -19,12 +19,14 @@ const thoughtSchema = new Schema(
       type: String,
       required: true,    
     },
+    //subdocument
     reactions: [reactionSchema],
   },
   {
     toJSON: {
       getters: true,
-      virtual:true,  
+      virtual:true, 
+      //remove version in json result
       transform: function (doc, ret) {
         delete ret.__v;
       }  
@@ -32,6 +34,7 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
+//virtual to create reaction count property
 thoughtSchema.virtual('reactionCount')
 .get(function(){
   return this.reactions.length;

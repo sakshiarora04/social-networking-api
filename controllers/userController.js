@@ -62,11 +62,16 @@ module.exports={
           res.status(500).json(err);
         }
       },
-      async addFriend(req, res) {
-        try {
+      async addFriend({params}, res) {
+        try {            
+            if(params.userId===params.friendId){
+                return res
+                .status(404)
+                .json({ message: 'User id and friend id must be different' });
+            }
          const user = await User.findOneAndUpdate(
-           { _id: req.params.userId },
-           { $addToSet: { friends: req.params.friendId } },
+           { _id: params.userId },
+           { $addToSet: { friends: params.friendId } },
            { runValidators: true, new: true }
          );
    
@@ -82,4 +87,24 @@ module.exports={
          res.status(500).json(err);
        }
      },
+     async removeFriend(req, res) {
+        try {
+           
+          const user = await User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $pull: { friends: { _id: req.params.friendId } } },
+            { runValidators: true, new: true }
+          );
+    
+          if (!user) {
+            return res
+              .status(404)
+              .json({ message: 'No user found with that ID' });
+          }
+    
+          res.json(user);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      },
 }

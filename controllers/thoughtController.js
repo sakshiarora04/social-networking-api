@@ -55,6 +55,10 @@ module.exports = {
   },
   async updateThought(req, res) {
     try {
+        const checkExistingUsername = await User.findOne({
+            username: req.body.username,
+          });
+          if (checkExistingUsername) {
       const updatedThought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $set: req.body },
@@ -64,6 +68,9 @@ module.exports = {
         return res.status(404).json({ message: "No thought with this id!" });
       }
       res.json(updatedThought);
+    } else {
+        return res.status(404).json({ message: "user not found" });
+      }
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
@@ -79,7 +86,7 @@ module.exports = {
       }
       const updateUser = await User.findOneAndUpdate(
         { thoughts: params.thoughtId },
-        { $pull: { thoughts:{_id:params.thoughtId } } },
+        { $pull: { thoughts:params.thoughtId  } },
         { new: true }
       );
       if (!updateUser) {

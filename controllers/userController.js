@@ -3,8 +3,8 @@ const {User, Thought}= require('../models');
 module.exports={
     async getUsers(req,res){
         try {
-            const users= await User.find()
-            .populate([{path:'thoughts'},{path:'friends'}]);
+            const users= await User.find();
+            // .populate([{path:'thoughts'},{path:'friends'}]);
             res.json(users);
         } catch (err) {            
             return res.status(500).json(err);
@@ -88,11 +88,10 @@ module.exports={
        }
      },
      async removeFriend(req, res) {
-        try {
-           
+        try {           
           const user = await User.findOneAndUpdate(
             { _id: req.params.userId },
-            { $pull: { friends: { _id: req.params.friendId } } },
+            { $pull: { friends: req.params.friendId } },
             { runValidators: true, new: true }
           );
     

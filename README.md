@@ -1,6 +1,7 @@
 # Social Networking Api
 
-This is API platform for social networking application where users can share their thoughts, react to friend's thoughts, and create a friend list. It uses Express.js for routing, a MongoDB database, the Mongoose ODM. 
+This is API platform for social networking application where users can share their thoughts, react to friend's thoughts, and create a friend list. It uses Express.js for routing, a MongoDB database, the Mongoose ODM to handle large amounts of data with unstructured data.
+
 There are routes for doing the functions and all routes has been tested on insomnia:
 
 **USER**
@@ -29,6 +30,9 @@ There are routes for doing the functions and all routes has been tested on insom
 - Add a reaction: POST Route- `/api/thoughts/:thoughtId/reactions`
 - Remove reaction from user's thought by the reactionId: DEL Route- `/api/thoughts/:thoughtId/reactions/:reactionId`
 
+See the walk-through demonstration video here:
+https://drive.google.com/file/d/1anYL7kJInqM3tQNvqJjzGL-yFyGQE7FY/view?usp=sharing
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -49,6 +53,27 @@ There are routes for doing the functions and all routes has been tested on insom
 
 ## Usage
 
+- When we enter the command to invoke the application, server gets started and the Mongoose models are synced to the MongoDB database
+
+    ![mongoDB.](./assets/images/mongodb.jpg)
+
+- When API GET routes for users and thoughts are opened in Insomnia then the data for each of these routes is displayed in a formatted JSON.
+
+- We can create a user with username and email address. User can have associated thoughts and it can also be updated and deleted by id. When we delete user then its associated thoughts also gets deleted.
+
+    ![users.](./assets/images/users.gif)
+
+- User can add or remove friends from their friends list.
+
+    ![friend.](./assets/images/friend.gif)
+
+- Thoughts can be created by user by API POST route and user can also update and delete thoughts by id using API PUT, and DELETE routes in Insomnia.
+
+    ![thought.](./assets/images/thoughts.gif)
+
+- There is facility to add or remove reactions on different thoughts by users.
+
+    ![reaction.](./assets/images/reaction.gif)
 
 ## Technologies
 

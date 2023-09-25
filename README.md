@@ -30,7 +30,8 @@ There are routes for doing the functions and all routes has been tested on insom
 - Add a reaction: POST Route- `/api/thoughts/:thoughtId/reactions`
 - Remove reaction from user's thought by the reactionId: DEL Route- `/api/thoughts/:thoughtId/reactions/:reactionId`
 
-See the walk-through demonstration video here:
+**See the walk-through demonstration video here:**
+
 https://drive.google.com/file/d/1anYL7kJInqM3tQNvqJjzGL-yFyGQE7FY/view?usp=sharing
 
 ## Table of Contents
@@ -62,6 +63,7 @@ https://drive.google.com/file/d/1anYL7kJInqM3tQNvqJjzGL-yFyGQE7FY/view?usp=shari
 - We can create a user with username and email address. User can have associated thoughts and it can also be updated and deleted by id. When we delete user then its associated thoughts also gets deleted.
 
     ![users.](./assets/images/users.gif)
+    ![users.](./assets/images/user.jpg)
 
 - User can add or remove friends from their friends list.
 
@@ -70,6 +72,8 @@ https://drive.google.com/file/d/1anYL7kJInqM3tQNvqJjzGL-yFyGQE7FY/view?usp=shari
 - Thoughts can be created by user by API POST route and user can also update and delete thoughts by id using API PUT, and DELETE routes in Insomnia.
 
     ![thought.](./assets/images/thoughts.gif)
+    ![thought.](./assets/images/thought.jpg)
+
 
 - There is facility to add or remove reactions on different thoughts by users.
 
@@ -89,7 +93,9 @@ https://drive.google.com/file/d/1anYL7kJInqM3tQNvqJjzGL-yFyGQE7FY/view?usp=shari
 References:
 
 https://stackoverflow.com/questions/13699784/mongoose-v-property-hide
+
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString
+
 ## Contact Information
 
 Github Username: [sakshiarora04](https://github.com/sakshiarora04)
